@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
-  Award,
   ShieldCheck,
   Sparkles,
   Phone,
@@ -16,8 +15,6 @@ import {
   Star,
   Waves,
   Droplets,
-  Flame,
-  Palette,
   Hammer,
   Leaf,
   Cpu,
@@ -32,29 +29,29 @@ import {
 // ═══════════════════════════════════════════════════════════════
 // BRAND CONFIG — swap these values when you rebrand for a client.
 // Everything in this block is the only thing you should need to
-// change to re-skin the site for a new pool builder.
+// change to re-skin the site for a new pool service company.
 // ═══════════════════════════════════════════════════════════════
 
 const BRAND = {
-  name: 'Lagoon & Stone',
-  tagline: 'Custom Pool Builders',
-  city: 'Scottsdale',
-  region: 'Arizona',
-  since: 2008,
-  phone: '(480) 555-0147',
-  phoneRaw: '4805550147',
-  email: 'studio@lagoonandstone.com',
-  address: '7214 E Stetson Dr, Scottsdale, AZ 85251',
-  license: 'ROC-318842',
-  hours: 'Mon–Fri: 8am – 5pm · By appointment Sat',
+  name: 'Crystal Route',
+  tagline: 'Weekly Pool Service & Care',
+  city: 'Fresno',
+  region: 'California',
+  since: 2014,
+  phone: '(559) 555-0147',
+  phoneRaw: '5595550147',
+  email: 'crew@crystalroutepools.com',
+  address: '2814 N Blackstone Ave, Fresno, CA 93703',
+  license: 'C-61/D-35 #1023847',
+  hours: 'Mon-Fri: 7am-5pm · Sat: by appointment',
   social: {
     instagram: 'https://instagram.com',
     facebook: 'https://facebook.com',
   },
   stats: {
-    pools: 420,
-    years: 18,
-    awards: 14,
+    pools: 1200,
+    years: 12,
+    weekly: 180,
     rating: 4.9,
   },
 };
@@ -74,7 +71,7 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const links = ['Portfolio', 'Process', 'Services', 'About', 'FAQ'];
+  const links = ['Gallery', 'Process', 'Services', 'About', 'FAQ'];
 
   return (
     <nav
@@ -110,7 +107,7 @@ const Navbar = () => {
             href="#contact"
             className="px-5 py-2.5 bg-[#0e7490] text-[#f7f3ec] rounded-full text-xs font-semibold uppercase tracking-[0.18em] hover:bg-[#155e75] transition-all shadow-lg shadow-[#0e7490]/20"
           >
-            Book Consultation
+            Get a Quote
           </a>
         </div>
 
@@ -149,9 +146,9 @@ const Navbar = () => {
 };
 
 // ─── HERO ───────────────────────────────────────────────────────
-// The single most important section on a pool-builder site.
+// The single most important section on a pool service site.
 // Full-bleed imagery, serif display headline, dual CTA, trust chips,
-// and a featured-build glass card on the right to anchor the eye.
+// and a recent-restoration glass card on the right to anchor the eye.
 
 const Hero = () => {
   return (
@@ -160,7 +157,7 @@ const Hero = () => {
       <div className="absolute inset-0 shimmer-slow">
         <img
           src="https://images.unsplash.com/photo-1602002418082-a4443e081dd1?q=80&w=2400&auto=format&fit=crop"
-          alt={`Luxury custom pool built by ${BRAND.name} in ${BRAND.city}`}
+          alt={`Crystal-clear pool serviced weekly by ${BRAND.name} in ${BRAND.city}`}
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
         />
@@ -182,19 +179,17 @@ const Hero = () => {
               ))}
             </div>
             <span className="text-[11px] uppercase tracking-[0.2em] text-white/90 font-medium">
-              {BRAND.stats.rating} · Award-winning since {BRAND.since}
+              {BRAND.stats.rating} stars · Serving {BRAND.region} since {BRAND.since}
             </span>
           </div>
 
           <h1 className="font-display text-white text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-[0.95] tracking-tight font-light mb-7">
-            The pool you've <br />
-            been <em className="font-normal text-[#e8d7b8]">dreaming of.</em>
+            Crystal clear, <br />
+            <em className="font-normal text-[#e8d7b8]">every week.</em>
           </h1>
 
           <p className="text-white/85 text-lg md:text-xl max-w-xl leading-relaxed font-light mb-10">
-            {BRAND.name} is a {BRAND.stats.years}-year-old studio of designers,
-            stonemasons, and builders turning {BRAND.city} backyards into
-            private resorts. Every pool is drawn, engineered, and built by us.
+            {BRAND.name} is a family-run pool service crew keeping {BRAND.city} pools swim-ready year-round. Same tech, same day, every week. Balanced chemistry, a clean pool, and a crew that actually shows up.
           </p>
 
           <div className="flex flex-wrap items-center gap-4">
@@ -202,17 +197,17 @@ const Hero = () => {
               href="#contact"
               className="group px-7 py-4 bg-[#f7f3ec] text-[#1a1714] rounded-full font-semibold text-sm uppercase tracking-[0.2em] flex items-center gap-2 hover:bg-white transition-all shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)]"
             >
-              Book a Design Consultation
+              Get a Free Quote
               <ChevronRight
                 size={16}
                 className="group-hover:translate-x-1 transition-transform"
               />
             </a>
             <a
-              href="#portfolio"
+              href="#gallery"
               className="px-7 py-4 glass-dark text-white rounded-full font-semibold text-sm uppercase tracking-[0.2em] flex items-center gap-2 hover:bg-white/10 transition-all"
             >
-              Explore Our Work
+              See Recent Work
             </a>
           </div>
 
@@ -222,17 +217,17 @@ const Hero = () => {
               Licensed #{BRAND.license}
             </span>
             <span className="flex items-center gap-2">
-              <Award size={15} className="text-[#e8d7b8]" />
-              {BRAND.stats.awards} design awards
+              <Calendar size={15} className="text-[#e8d7b8]" />
+              {BRAND.stats.weekly} weekly stops
             </span>
             <span className="flex items-center gap-2">
               <Gem size={15} className="text-[#e8d7b8]" />
-              {BRAND.stats.pools}+ pools built
+              {BRAND.stats.pools}+ pools serviced
             </span>
           </div>
         </motion.div>
 
-        {/* Featured build card */}
+        {/* Recent restoration card */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -243,30 +238,29 @@ const Hero = () => {
             <div className="relative aspect-[5/4]">
               <img
                 src="https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=1200&auto=format&fit=crop"
-                alt="Recent infinity pool build"
+                alt="Recent green-to-clean pool restoration"
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] uppercase tracking-[0.18em] text-white font-semibold">
-                Just Completed
+                This Week's Save
               </div>
             </div>
             <div className="p-6">
               <p className="text-[10px] uppercase tracking-[0.22em] text-[#e8d7b8] mb-2">
-                Featured Build · Paradise Valley
+                Recent Restoration · Clovis
               </p>
               <h3 className="font-display text-2xl text-white leading-tight mb-3">
-                Mesa Ridge Infinity
+                Sunridge Green-to-Clean
               </h3>
               <p className="text-white/75 text-sm leading-relaxed mb-5">
-                62-foot infinity edge, travertine coping, integrated spa, and
-                fire bowls overlooking the McDowell Mountains.
+                48-hour green-to-clean turnaround. Algae cleared, chemistry rebalanced, filter cartridges replaced, and back on a weekly route the same week.
               </p>
               <a
-                href="#portfolio"
+                href="#gallery"
                 className="inline-flex items-center gap-1.5 text-sm text-white font-medium group"
               >
-                See full build
+                See the transformation
                 <ArrowUpRight
                   size={14}
                   className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
@@ -294,12 +288,12 @@ const Hero = () => {
 
 const TrustStrip = () => {
   const items = [
-    'APSP Certified Builder',
+    'CPO Certified Technicians',
     'BBB Accredited · A+',
-    'Pentair Platinum Partner',
-    'Houzz Best of Design',
-    'Jandy Pro Dealer',
-    'Licensed & Bonded',
+    'Licensed & Insured',
+    'Pentair Service Partner',
+    'Hayward Pro Dealer',
+    'Same-Week Start',
   ];
 
   return (
@@ -319,76 +313,76 @@ const TrustStrip = () => {
   );
 };
 
-// ─── PORTFOLIO ──────────────────────────────────────────────────
-// The primary selling tool for a pool builder.
+// ─── GALLERY ────────────────────────────────────────────────────
+// The primary selling tool for a pool service company:
+// transformations, weekly routes, and equipment work.
 
-const Portfolio = () => {
+const Gallery = () => {
   const projects = [
     {
       image:
         'https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1600&auto=format&fit=crop',
-      title: 'Desert Modern',
-      location: 'Paradise Valley, AZ',
-      tags: ['Infinity Edge', 'Spa', 'Fire Features'],
+      title: 'Sunridge Restoration',
+      location: 'Clovis, CA',
+      tags: ['Green-to-Clean', '48hr Turnaround', 'Chemistry'],
       size: 'large',
     },
     {
       image:
         'https://images.unsplash.com/photo-1582610116397-edb318620f90?q=80&w=1600&auto=format&fit=crop',
-      title: 'Travertine Retreat',
-      location: 'Scottsdale, AZ',
-      tags: ['Remodel', 'Hardscape'],
+      title: 'Camelback Weekly Route',
+      location: 'Fresno, CA',
+      tags: ['Weekly Service', 'Tile Care'],
       size: 'medium',
     },
     {
       image:
         'https://images.unsplash.com/photo-1572331165267-854da2b10ccc?q=80&w=1600&auto=format&fit=crop',
-      title: 'Glass Tile Lagoon',
-      location: 'Carefree, AZ',
-      tags: ['New Construction', 'Glass Tile'],
+      title: 'Carefree Tile Reset',
+      location: 'Madera, CA',
+      tags: ['Acid Wash', 'Tile Restoration'],
       size: 'medium',
     },
     {
       image:
         'https://images.unsplash.com/photo-1615394573835-e2b10cc35b9d?q=80&w=1600&auto=format&fit=crop',
-      title: 'Stone & Olive',
-      location: 'Cave Creek, AZ',
-      tags: ['Natural Stone', 'Landscape'],
+      title: 'Sanger Equipment Swap',
+      location: 'Sanger, CA',
+      tags: ['Equipment Repair', 'Pump Replacement'],
       size: 'medium',
     },
     {
       image:
         'https://images.unsplash.com/photo-1617850687395-620757feb1f3?q=80&w=1600&auto=format&fit=crop',
-      title: 'Courtyard Plunge',
-      location: 'Arcadia, AZ',
-      tags: ['Compact Pool', 'Plunge'],
+      title: 'Old Town Spa Care',
+      location: 'Selma, CA',
+      tags: ['Spa Service', 'Chemistry'],
       size: 'medium',
     },
     {
       image:
         'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?q=80&w=1600&auto=format&fit=crop',
-      title: 'Sunset Vanishing Edge',
-      location: 'Fountain Hills, AZ',
-      tags: ['Vanishing Edge', 'Spa', 'Automation'],
+      title: 'North Fresno Salt System',
+      location: 'Fresno, CA',
+      tags: ['Salt Cell', 'Filter Service', 'Weekly'],
       size: 'large',
     },
   ];
 
   return (
-    <section id="portfolio" className="py-28 md:py-36 px-6 bg-[#f7f3ec]">
+    <section id="gallery" className="py-28 md:py-36 px-6 bg-[#f7f3ec]">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-10 mb-16">
           <div className="max-w-2xl">
             <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#0e7490] mb-5">
-              Signature Builds
+              Recent Care
             </p>
             <h2 className="font-display text-5xl md:text-6xl text-[#1a1714] tracking-tight font-light leading-[1.02]">
-              Every backyard is <em className="font-normal text-[#0e7490]">one&nbsp;of&nbsp;one.</em>
+              Every pool, <em className="font-normal text-[#0e7490]">dialed&nbsp;in.</em>
             </h2>
           </div>
           <p className="text-[#3d3731] max-w-sm font-light leading-relaxed">
-            A curated selection of recent builds across the Valley. Styles span
-            modern, Mediterranean, and desert contemporary — no two are alike.
+            A look at recent weekly routes, green-to-clean restorations, and equipment overhauls across the Valley. Every visit, photo-documented.
           </p>
         </div>
 
@@ -406,7 +400,7 @@ const Portfolio = () => {
             >
               <img
                 src={proj.image}
-                alt={`${proj.title} pool build in ${proj.location}`}
+                alt={`${proj.title} pool service in ${proj.location}`}
                 className="w-full h-full object-cover transition-transform duration-[1400ms] group-hover:scale-[1.04]"
                 referrerPolicy="no-referrer"
                 loading="lazy"
@@ -439,7 +433,7 @@ const Portfolio = () => {
             href="#contact"
             className="inline-flex items-center gap-2 text-[#0e7490] font-semibold text-sm uppercase tracking-[0.2em] hover:gap-3 transition-all"
           >
-            Start your build
+            Get on the route
             <ArrowUpRight size={16} />
           </a>
         </div>
@@ -455,30 +449,30 @@ const Process = () => {
     {
       num: '01',
       icon: Calendar,
-      title: 'Discover',
+      title: 'Free Quote',
       description:
-        'We walk your property, listen to how you live, and understand how you want to use the space. No sales pressure — we only take on projects we can do right.',
+        "We come out, walk through your pool and equipment, and give you a flat monthly rate. No pressure, no upsells, no surprise fees.",
     },
     {
       num: '02',
       icon: PenTool,
-      title: 'Design',
+      title: 'Custom Plan',
       description:
-        'Our in-house designer produces scaled site plans, 3D renderings, and a full material palette. You approve every line before a single shovel hits dirt.',
+        'Service plan built around your pool size, equipment, and how you actually use it. Salt or chlorine, full chemicals included or your own, we work how you want.',
     },
     {
       num: '03',
-      icon: Hammer,
-      title: 'Build',
+      icon: Droplets,
+      title: 'Weekly Visits',
       description:
-        'A dedicated project manager, our own crews, and licensed subs. Weekly site photos, a live schedule, and zero mystery on where your build stands.',
+        'Same tech, same day, every week. Brushing, vacuuming, baskets, full chemistry, filter check, and equipment inspection. Every visit, every time.',
     },
     {
       num: '04',
       icon: Sparkles,
-      title: 'Reveal',
+      title: 'Peace of Mind',
       description:
-        "Water-fill, start-up, orientation, and a walkthrough of your automation. Then a lifetime of support — you're a client forever, not just for this build.",
+        "Photo report after every visit so you know exactly what was done. Pool not crystal? Free re-clean. You enjoy the water, we handle the rest.",
     },
   ];
 
@@ -487,10 +481,10 @@ const Process = () => {
       <div className="max-w-7xl mx-auto">
         <div className="max-w-2xl mb-20">
           <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#e8d7b8] mb-5">
-            The Process
+            How It Works
           </p>
           <h2 className="font-display text-5xl md:text-6xl tracking-tight font-light leading-[1.02]">
-            From first sketch to <em className="font-normal text-[#67e8f9]">first swim.</em>
+            From first call to <em className="font-normal text-[#67e8f9]">crystal clear.</em>
           </h2>
         </div>
 
@@ -528,39 +522,39 @@ const Services = () => {
   const services = [
     {
       icon: Droplets,
-      title: 'Custom Pool Design',
+      title: 'Weekly Pool Service',
       description:
-        'Ground-up design tailored to your lot, architecture, and lifestyle. No templates, no catalogs.',
+        'Same tech, same day, every week. Vacuum, brush, baskets, full chemistry, and equipment inspection. Chemicals included.',
     },
     {
-      icon: Hammer,
-      title: 'New Construction',
+      icon: Sparkles,
+      title: 'Chemical Balancing',
       description:
-        'Full-service build — excavation, shell, plumbing, plaster, decking, and everything in between.',
-    },
-    {
-      icon: Palette,
-      title: 'Pool Remodels',
-      description:
-        "Tired '90s pools reborn. Replaster, retile, equipment upgrades, and full redesigns welcome.",
-    },
-    {
-      icon: Flame,
-      title: 'Spas & Water Features',
-      description:
-        'Attached spas, standalone vessels, sheer descents, rain walls, bubblers, and fire bowls.',
+        'Full water test every visit. Chlorine, pH, alkalinity, calcium hardness, cyanuric acid, and salt levels dialed in.',
     },
     {
       icon: Leaf,
-      title: 'Outdoor Living',
+      title: 'Green-to-Clean',
       description:
-        'Pergolas, built-in grills, fire pits, and landscape integration to make the whole backyard sing.',
+        'Algae blooms cleared in 24 to 72 hours. Shock, brush, filter clean, and chemistry reset. Back to crystal, fast.',
     },
     {
       icon: Cpu,
-      title: 'Smart Automation',
+      title: 'Equipment & Repair',
       description:
-        'Pentair, Jandy, and Hayward automation — control every light, pump, and feature from your phone.',
+        'Pumps, filters, heaters, salt cells, and automation. We service Pentair, Hayward, Jandy and replace what is past saving.',
+    },
+    {
+      icon: Gem,
+      title: 'Tile & Acid Wash',
+      description:
+        'Calcium and waterline tile cleaned. Bead blasting, chemical washes, and full acid washes for plaster restoration.',
+    },
+    {
+      icon: Hammer,
+      title: 'Drains & One-Time Cleans',
+      description:
+        'Pool draining, deep cleaning, filter teardowns, and leak detection. Anything beyond weekly, we handle it.',
     },
   ];
 
@@ -569,10 +563,10 @@ const Services = () => {
       <div className="max-w-7xl mx-auto">
         <div className="max-w-3xl mb-16">
           <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#0e7490] mb-5">
-            What We Build
+            What We Do
           </p>
           <h2 className="font-display text-5xl md:text-6xl text-[#1a1714] tracking-tight font-light leading-[1.02]">
-            One studio. Every part of the <em className="font-normal text-[#0e7490]">backyard.</em>
+            One crew. Every part of <em className="font-normal text-[#0e7490]">pool care.</em>
           </h2>
         </div>
 
@@ -609,20 +603,20 @@ const Testimonials = () => {
   const reviews = [
     {
       name: 'Megan & Tom R.',
-      location: 'Paradise Valley, AZ',
-      text: 'We interviewed four builders. Lagoon & Stone was the only one who listened before they drew. A year later, we still get stopped by neighbors asking who built it.',
+      location: 'Clovis, CA',
+      text: 'We tried three pool guys before finding Crystal Route. They are the only crew that actually shows up the same day every week. Pool has never looked better.',
       rating: 5,
     },
     {
       name: 'David K.',
-      location: 'Scottsdale, AZ',
-      text: 'Weekly site photos, a live schedule, and they answered the phone every time I called. The finished pool is somehow even better than the renderings.',
+      location: 'Fresno, CA',
+      text: 'Photo report after every visit. I always know exactly what was done and what the chemistry looks like. Worth every penny just for the peace of mind.',
       rating: 5,
     },
     {
       name: 'Priya S.',
-      location: 'Arcadia, AZ',
-      text: 'Our lot was complicated — sloped, narrow, and loaded with mature olive trees. They kept every tree, engineered around the slope, and the pool feels like it grew out of the hillside.',
+      location: 'Madera, CA',
+      text: 'Our pool was green for two months between services. They cleared it in 48 hours and it has stayed crystal ever since. The whole crew is professional.',
       rating: 5,
     },
   ];
@@ -697,7 +691,7 @@ const About = () => {
         >
           <img
             src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?q=80&w=1400&auto=format&fit=crop"
-            alt={`${BRAND.name} design studio in ${BRAND.city}`}
+            alt={`${BRAND.name} pool service crew in ${BRAND.city}`}
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
             loading="lazy"
@@ -707,22 +701,17 @@ const About = () => {
 
         <div>
           <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#0e7490] mb-5">
-            The Studio
+            The Crew
           </p>
           <h2 className="font-display text-4xl md:text-5xl text-[#1a1714] tracking-tight font-light leading-[1.05] mb-7">
-            Designers first. <br />
-            Builders <em className="font-normal text-[#0e7490]">always.</em>
+            Family-owned. <br />
+            Pool <em className="font-normal text-[#0e7490]">obsessed.</em>
           </h2>
           <p className="text-[#3d3731] text-lg font-light leading-relaxed mb-5">
-            {BRAND.name} was founded in {BRAND.since} with a simple rule: we
-            only build what we would swim in ourselves. Every pool is drawn by
-            our in-house designer, engineered by our team, and constructed by
-            crews we know by name.
+            {BRAND.name} was founded in {BRAND.since} on one rule: we only service pools we would swim in ourselves. Every visit is the same tech, the same care, every time.
           </p>
           <p className="text-[#3d3731] text-lg font-light leading-relaxed mb-10">
-            No cookie-cutter layouts. No subcontracted design. No surprises on
-            invoice day. Just a slow, deliberate approach to one of the biggest
-            projects you'll ever take on in your home.
+            No subcontracted routes. No mystery charges. No skipped weeks. Just consistent, professional pool care from a crew who actually shows up.
           </p>
 
           <div className="grid grid-cols-3 gap-6 pt-10 border-t border-[#1a1714]/10">
@@ -731,7 +720,7 @@ const About = () => {
                 {BRAND.stats.years}
               </div>
               <div className="text-[10px] uppercase tracking-[0.2em] text-[#5a524a] font-semibold">
-                Years Building
+                Years in Service
               </div>
             </div>
             <div>
@@ -739,15 +728,15 @@ const About = () => {
                 {BRAND.stats.pools}+
               </div>
               <div className="text-[10px] uppercase tracking-[0.2em] text-[#5a524a] font-semibold">
-                Pools Delivered
+                Pools Serviced
               </div>
             </div>
             <div>
               <div className="font-display text-4xl text-[#0e7490] font-normal mb-1">
-                {BRAND.stats.awards}
+                {BRAND.stats.weekly}
               </div>
               <div className="text-[10px] uppercase tracking-[0.2em] text-[#5a524a] font-semibold">
-                Design Awards
+                Weekly Stops
               </div>
             </div>
           </div>
@@ -798,34 +787,34 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
 const FAQ = () => {
   const faqs = [
     {
-      question: 'What does a custom pool typically cost?',
+      question: 'What does weekly pool service cost?',
       answer:
-        'Most of our builds fall between $95K and $350K depending on size, materials, and features. We never price-gate the design consultation — you get real numbers before you commit.',
+        'Most weekly service falls between $130 and $220 per month depending on pool size, equipment, and whether chemicals are included. We give you a flat monthly rate after a free walk-through. No surprise charges, ever.',
     },
     {
-      question: 'How long does a build take from contract to swim?',
+      question: 'How often do you come out?',
       answer:
-        'Average is 14–20 weeks from permit to water. We publish a live schedule for every build and flag any permitting or weather delays the moment they surface.',
+        "Once a week, same day, every week. Bi-weekly is available on smaller or off-season pools. Most clients see us every Tuesday or Thursday. We'll lock in a day that works for your schedule.",
     },
     {
-      question: 'Do you handle permits and HOA approvals?',
+      question: 'Do I need to be home for service?',
       answer:
-        "Yes. We pull every permit, submit all HOA paperwork, and coordinate with your city's inspections. You sign documents — we handle the rest.",
+        "Nope. Most of our visits happen while you are at work. We'll text or email a photo report after every visit so you know exactly what was done and what the chemistry looks like.",
     },
     {
-      question: 'Can you work with my existing landscaper or architect?',
+      question: 'What does weekly service include?',
       answer:
-        'Absolutely. About a third of our projects are collaborations with an existing design team. We slot in respectfully and communicate constantly.',
+        'Full chemistry test and balance, brushing all walls and steps, vacuuming, skimmer and pump baskets emptied, filter pressure check, equipment inspection, and chemicals included in the monthly rate. No add-on fees.',
     },
     {
-      question: 'Do you offer financing?',
+      question: 'What if my pool turns green between visits?',
       answer:
-        "We partner with HFS Financial and LightStream. Most clients qualify in minutes and we'll walk you through the options at your consultation.",
+        'Free re-clean. If anything is off when we show up next week, we fix it on us. That is the whole point of a flat monthly rate. You should never be guessing whether your pool is safe to swim in.',
     },
     {
-      question: 'What happens after the pool is finished?',
+      question: 'Do you do equipment repair and one-time cleans?',
       answer:
-        "You're a client for life. Free start-up orientation, a 10-year structural warranty, and priority scheduling on service and remodels down the road.",
+        'Yes. Equipment repair, green-to-clean restorations, tile and acid washes, and one-time deep cleans for vacation rentals or property managers. Service customers get priority scheduling.',
     },
   ];
 
@@ -837,7 +826,7 @@ const FAQ = () => {
             Common Questions
           </p>
           <h2 className="font-display text-5xl md:text-6xl text-[#1a1714] tracking-tight font-light leading-[1.02]">
-            What people ask <em className="font-normal text-[#0e7490]">before&nbsp;they&nbsp;build.</em>
+            What people ask <em className="font-normal text-[#0e7490]">before&nbsp;they&nbsp;sign&nbsp;up.</em>
           </h2>
         </div>
         <div>
@@ -854,25 +843,25 @@ const FAQ = () => {
 
 const ServiceArea = () => {
   const areas = [
-    'Scottsdale',
-    'Paradise Valley',
-    'Arcadia',
-    'Cave Creek',
-    'Carefree',
-    'Fountain Hills',
-    'Phoenix',
-    'Chandler',
-    'Gilbert',
-    'Mesa',
-    'Tempe',
-    'Ahwatukee',
+    'Fresno',
+    'Clovis',
+    'Madera',
+    'Sanger',
+    'Selma',
+    'Reedley',
+    'Kingsburg',
+    'Visalia',
+    'Tulare',
+    'Hanford',
+    'Kerman',
+    'Fowler',
   ];
 
   return (
     <section className="py-20 px-6 bg-[#1a1714]">
       <div className="max-w-6xl mx-auto text-center">
         <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#e8d7b8] mb-6">
-          Building Across {BRAND.region}
+          Servicing Across {BRAND.region}
         </p>
         <div className="flex flex-wrap justify-center gap-2">
           {areas.map((area, i) => (
@@ -890,7 +879,7 @@ const ServiceArea = () => {
   );
 };
 
-// ─── CONTACT / CONSULTATION ─────────────────────────────────────
+// ─── CONTACT / QUOTE ────────────────────────────────────────────
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -898,7 +887,7 @@ const Contact = () => {
     phone: '',
     email: '',
     project: '',
-    budget: '',
+    poolSize: '',
     message: '',
   });
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
@@ -912,14 +901,14 @@ const Contact = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
-          subject: `New Consultation Request — ${formData.name}`,
+          subject: `New Quote Request - ${formData.name}`,
           from_name: formData.name,
           ...formData,
         }),
       });
       if (res.ok) {
         setStatus('success');
-        setFormData({ name: '', phone: '', email: '', project: '', budget: '', message: '' });
+        setFormData({ name: '', phone: '', email: '', project: '', poolSize: '', message: '' });
       } else {
         setStatus('error');
       }
@@ -934,15 +923,13 @@ const Contact = () => {
         <div className="grid md:grid-cols-12 gap-12 md:gap-16">
           <div className="md:col-span-5">
             <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#0e7490] mb-5">
-              Book a Consultation
+              Get a Free Quote
             </p>
             <h2 className="font-display text-5xl md:text-6xl text-[#1a1714] tracking-tight font-light leading-[1.02] mb-7">
-              Let's design <br /> your <em className="font-normal text-[#0e7490]">backyard.</em>
+              Let's keep it <em className="font-normal text-[#0e7490]">crystal.</em>
             </h2>
             <p className="text-[#3d3731] text-lg font-light leading-relaxed mb-10">
-              Tell us about your project. We'll reach out within one business
-              day to schedule a walk-through of your property and an initial
-              design conversation.
+              Tell us a bit about your pool. We'll reach out within one business day to schedule a free walk-through and a flat monthly quote.
             </p>
 
             <div className="space-y-5">
@@ -955,7 +942,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <div className="text-[10px] uppercase tracking-[0.22em] text-[#5a524a] font-semibold">
-                    Call the studio
+                    Call the crew
                   </div>
                   <div className="text-[#1a1714] font-semibold">{BRAND.phone}</div>
                 </div>
@@ -969,7 +956,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <div className="text-[10px] uppercase tracking-[0.22em] text-[#5a524a] font-semibold">
-                    Email us
+                    Email the crew
                   </div>
                   <div className="text-[#1a1714] font-semibold">{BRAND.email}</div>
                 </div>
@@ -980,7 +967,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <div className="text-[10px] uppercase tracking-[0.22em] text-[#5a524a] font-semibold">
-                    Visit the studio
+                    Office address
                   </div>
                   <div className="text-[#1a1714] font-medium text-sm">{BRAND.address}</div>
                 </div>
@@ -998,11 +985,10 @@ const Contact = () => {
                 >
                   <CheckCircle2 size={56} className="text-[#0e7490] mx-auto mb-6" />
                   <h4 className="font-display text-3xl text-[#1a1714] mb-3">
-                    Request received.
+                    Quote request received.
                   </h4>
                   <p className="text-[#5a524a] font-light">
-                    We'll be in touch within one business day. If it's urgent,
-                    call the studio at {BRAND.phone}.
+                    We'll be in touch within one business day. If it's urgent, call the crew at {BRAND.phone}.
                   </p>
                 </motion.div>
               ) : (
@@ -1024,7 +1010,7 @@ const Contact = () => {
                       required
                       value={formData.phone}
                       onChange={(v) => setFormData({ ...formData, phone: v })}
-                      placeholder="(480) 555-0000"
+                      placeholder="(559) 555-0000"
                     />
                   </div>
                   <Field
@@ -1038,29 +1024,30 @@ const Contact = () => {
                   />
                   <div className="grid sm:grid-cols-2 gap-5">
                     <SelectField
-                      label="Project Type"
+                      label="Service Type"
                       id="project"
                       value={formData.project}
                       onChange={(v) => setFormData({ ...formData, project: v })}
                       options={[
-                        'New pool construction',
-                        'Pool remodel',
-                        'Spa only',
-                        'Outdoor living / hardscape',
+                        'Weekly pool service',
+                        'Green-to-clean restoration',
+                        'Equipment repair',
+                        'One-time deep clean',
+                        'Tile cleaning / acid wash',
                         'Not sure yet',
                       ]}
                     />
                     <SelectField
-                      label="Estimated Budget"
-                      id="budget"
-                      value={formData.budget}
-                      onChange={(v) => setFormData({ ...formData, budget: v })}
+                      label="Pool Size"
+                      id="poolSize"
+                      value={formData.poolSize}
+                      onChange={(v) => setFormData({ ...formData, poolSize: v })}
                       options={[
-                        'Under $100K',
-                        '$100K – $175K',
-                        '$175K – $275K',
-                        '$275K+',
-                        'Prefer to discuss',
+                        'Spa only',
+                        'Under 15,000 gallons',
+                        '15,000 to 25,000 gallons',
+                        '25,000+ gallons',
+                        'Not sure',
                       ]}
                     />
                   </div>
@@ -1069,7 +1056,7 @@ const Contact = () => {
                       htmlFor="message"
                       className="text-[10px] text-[#5a524a] uppercase tracking-[0.22em] font-semibold mb-2 block"
                     >
-                      Tell us about your project
+                      Tell us about your pool
                     </label>
                     <textarea
                       id="message"
@@ -1078,7 +1065,7 @@ const Contact = () => {
                       onChange={(e) =>
                         setFormData({ ...formData, message: e.target.value })
                       }
-                      placeholder="Lot size, timeline, style you're drawn to, and anything else that'd help us prepare."
+                      placeholder="Pool size, current state, equipment brand, and anything else that'd help us quote."
                       className="w-full bg-[#f7f3ec] border border-transparent focus:border-[#0e7490] rounded-xl px-5 py-4 text-[#1a1714] placeholder:text-[#5a524a]/60 focus:outline-none transition-colors resize-none font-light"
                     />
                   </div>
@@ -1091,7 +1078,7 @@ const Contact = () => {
                       'Sending…'
                     ) : (
                       <>
-                        Request Consultation <ChevronRight size={16} />
+                        Get My Free Quote <ChevronRight size={16} />
                       </>
                     )}
                   </button>
@@ -1201,7 +1188,7 @@ const Footer = () => (
             <span className="font-display text-2xl">{BRAND.name}</span>
           </div>
           <h4 className="font-display text-3xl md:text-4xl font-light leading-[1.1] mb-8 max-w-md">
-            {BRAND.region}'s most meticulous <em className="font-normal text-[#67e8f9]">custom pool studio.</em>
+            {BRAND.region}'s most reliable <em className="font-normal text-[#67e8f9]">pool service crew.</em>
           </h4>
           <div className="flex gap-3">
             <a
@@ -1227,7 +1214,7 @@ const Footer = () => (
 
         <div className="md:col-span-3">
           <h5 className="text-[10px] uppercase tracking-[0.25em] font-semibold text-[#e8d7b8] mb-6">
-            Studio
+            Crew
           </h5>
           <ul className="space-y-3.5 text-white/70 font-light text-sm">
             <li>
@@ -1250,11 +1237,11 @@ const Footer = () => (
             Explore
           </h5>
           <ul className="space-y-3.5 text-white/70 font-light text-sm">
-            <li><a href="#portfolio" className="hover:text-white transition-colors">Portfolio</a></li>
+            <li><a href="#gallery" className="hover:text-white transition-colors">Gallery</a></li>
             <li><a href="#process" className="hover:text-white transition-colors">Process</a></li>
             <li><a href="#services" className="hover:text-white transition-colors">Services</a></li>
             <li><a href="#faq" className="hover:text-white transition-colors">FAQ</a></li>
-            <li><a href="#contact" className="hover:text-white transition-colors">Book Consultation</a></li>
+            <li><a href="#contact" className="hover:text-white transition-colors">Get a Quote</a></li>
           </ul>
         </div>
 
@@ -1264,9 +1251,9 @@ const Footer = () => (
           </h5>
           <ul className="space-y-3.5 text-white/70 font-light text-sm">
             <li>License #{BRAND.license}</li>
-            <li>APSP Certified Builder</li>
+            <li>CPO Certified Technicians</li>
             <li>BBB Accredited · A+</li>
-            <li>Fully Insured & Bonded</li>
+            <li>Fully Licensed & Insured</li>
           </ul>
         </div>
       </div>
@@ -1303,7 +1290,7 @@ export default function App() {
       <main>
         <Hero />
         <TrustStrip />
-        <Portfolio />
+        <Gallery />
         <Process />
         <Services />
         <Testimonials />
